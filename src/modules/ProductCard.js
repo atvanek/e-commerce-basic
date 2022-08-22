@@ -1,22 +1,32 @@
 import React from 'react'
 
-export default function ProductCard ({img, title, description}) {
-
-
+export default function ProductCard ({img, title, description, id, wishlist, addToWishlist, removeFromWishlist}) {
+   
+    const [details, setDetails] = React.useState(false);
     const [hovered, setHovered] = React.useState(false);
     const [favorite, setFavorite] = React.useState(false);
-    const [details, setDetails] = React.useState(false);
+
+
+    function addFavorite(id){
+        setFavorite(prev => !prev)
+        addToWishlist(id)
+    }
+
+    function removeFavorite(id){
+        setFavorite(prev => !prev);
+        removeFromWishlist(id)
+        console.log(wishlist)
+    }
+
 
     function heartIcon () {
         if(favorite){
-            return <i className="fa-solid fa-heart filled" onClick={()=>setFavorite(prev => !prev)}></i>
+            return <i className="fa-solid fa-heart filled" onClick={()=>removeFavorite(id)}></i>
         }
         else if (hovered){
-            return <i className="fa-regular fa-heart" onClick={()=>setFavorite(prev => !prev)}></i>
+            return <i className="fa-regular fa-heart" onClick={()=>addFavorite(id)}></i>
         }
     }
-
-    console.log(favorite)
 
     return (
         <div className="card col-12 col-md-3 m-3" onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)}>

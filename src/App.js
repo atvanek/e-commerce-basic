@@ -13,12 +13,38 @@ function App() {
   }, [])
 
   const [products, setProducts] = React.useState([])
+  const [wishlist, setWishlist] = React.useState([])
 
   const productCardElements = products.map(product => {
-    return <ProductCard img={product.image} title={product.title} description={product.description} key={product.id} />
+    return <ProductCard
+    products={products} 
+    img={product.image} 
+    title={product.title} 
+    description={product.description} 
+    key={product.id}
+    id={product.id}
+    wishlist={wishlist}
+    addToWishlist={addToWishlist}
+    removeFromWishlist={removeFromWishlist}/>
   })
 
-  console.log(products)
+function addToWishlist(id){
+  products.map(item=>{
+    if (item.id === id){
+      setWishlist(prev=>[...prev, item])
+    }
+  })
+}
+
+function removeFromWishlist(id){
+  products.map(item=>{
+    if (item.id === id){
+      setWishlist(prev=> prev.filter(item=> item.id !== id))
+    }
+  })
+}
+
+  
 
   return (
     <>
