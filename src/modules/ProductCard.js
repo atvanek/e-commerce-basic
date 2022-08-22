@@ -1,21 +1,25 @@
 import React from 'react'
+import {Context} from '../Context'
 
-export default function ProductCard ({img, title, description, id, wishlist, addToWishlist, removeFromWishlist}) {
+export default function ProductCard ({img, title, description, id, addToWishlist, removeFromWishlist}) {
    
     const [details, setDetails] = React.useState(false);
     const [hovered, setHovered] = React.useState(false);
     const [favorite, setFavorite] = React.useState(false);
 
+    const {wishlist, setWishlist} = React.useContext(Context)
+
 
     function addFavorite(id){
         setFavorite(prev => !prev)
         addToWishlist(id)
+        console.log('added to wishlist')
     }
 
     function removeFavorite(id){
         setFavorite(prev => !prev);
         removeFromWishlist(id)
-        console.log(wishlist)
+        console.log('removed from wishlist')
     }
 
 

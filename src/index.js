@@ -6,10 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Cart from './modules/Cart'
 import Wishlist from './modules/Wishlist'
+import {ContextProvider} from './Context'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <ContextProvider>
     <BrowserRouter>
     <Routes>
         <Route path='/' element={<App />}></Route>
@@ -17,6 +19,7 @@ root.render(
         <Route path='/wishlist' element={<Wishlist />}></Route>
       </Routes>
     </BrowserRouter>
+    </ContextProvider>
   </React.StrictMode>
 );
 

@@ -3,8 +3,16 @@ import './App.css';
 import Nav from './modules/Nav'
 import Banner from './modules/Banner'
 import ProductCard from './modules/ProductCard'
+import {Context} from './Context'
 
-function App() {
+function App(props) {
+
+  const {context, wishlist, setWishlist} = React.useContext(Context)
+
+  React.useEffect(()=>{
+    localStorage.setItem('wishlist', JSON.stringify(wishlist))
+  },[wishlist])
+
 
   React.useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -13,8 +21,7 @@ function App() {
   }, [])
 
   const [products, setProducts] = React.useState([])
-  const [wishlist, setWishlist] = React.useState([])
-
+  
   const productCardElements = products.map(product => {
     return <ProductCard
     products={products} 
@@ -23,7 +30,6 @@ function App() {
     description={product.description} 
     key={product.id}
     id={product.id}
-    wishlist={wishlist}
     addToWishlist={addToWishlist}
     removeFromWishlist={removeFromWishlist}/>
   })
@@ -47,14 +53,13 @@ function removeFromWishlist(id){
   
 
   return (
-    <>
-      <Nav />
-      <Banner />
-      <div className='product-card-container row'>
-        {productCardElements}
-      </div>
-      
-    </>
+    <>    <Nav />
+    <Banner />
+    <div className='product-card-container row'>
+      {productCardElements}
+    </div></>
+  
+   
     
   );
 }
