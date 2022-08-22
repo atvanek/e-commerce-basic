@@ -15,3 +15,49 @@ code {
 #banner-container{
   margin: 45px 15%;
 }
+
+.main-nav-icon{
+  font-size: 1rem;
+  margin: 0 10px;
+}
+
+.nav-icon{
+  font-size: .75rem;
+  padding: 5px;
+}
+
+.product-card-container{
+  margin: 20px;
+  background-color: aliceblue;
+  border-radius: 10px;
+
+}
+.row{
+  justify-content: space-around;
+}
+
+.card img{
+  padding: 15px;
+}
+
+.btn{
+  margin: 20px;
+}
+
+.card .fa-heart{
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.fa-heart:hover{
+  cursor: pointer;
+}
+
+.star {
+  color: gold;
+}
+
+ .filled{
+  color: red;
+}

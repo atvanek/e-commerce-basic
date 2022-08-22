@@ -15,8 +15,10 @@ function App() {
   const [products, setProducts] = React.useState([])
 
   const productCardElements = products.map(product => {
-    return <ProductCard img={product.image} key={product.id} />
+    return <ProductCard img={product.image} title={product.title} description={product.description} key={product.id} />
   })
+
+  console.log(products)
 
   return (
     <>
