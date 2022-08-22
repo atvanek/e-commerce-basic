@@ -1,14 +1,12 @@
 import React from 'react'
 import {Context} from '../Context'
 
-export default function ProductCard ({img, title, description, id, addToWishlist, removeFromWishlist}) {
+export default function ProductCard ({img, title, description, id}) {
    
     const [details, setDetails] = React.useState(false);
     const [hovered, setHovered] = React.useState(false);
     const [favorite, setFavorite] = React.useState(false);
-
-    const {wishlist, setWishlist} = React.useContext(Context)
-
+    const {addToWishlist, removeFromWishlist} = React.useContext(Context)
 
     function addFavorite(id){
         setFavorite(prev => !prev)

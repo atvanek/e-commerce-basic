@@ -7,7 +7,7 @@ import {Context} from './Context'
 
 function App(props) {
 
-  const {context, wishlist, setWishlist} = React.useContext(Context)
+  const {wishlist, products, setProducts, remove} = React.useContext(Context)
 
   React.useEffect(()=>{
     localStorage.setItem('wishlist', JSON.stringify(wishlist))
@@ -20,7 +20,7 @@ function App(props) {
             .then(json=>setProducts(json))
   }, [])
 
-  const [products, setProducts] = React.useState([])
+
   
   const productCardElements = products.map(product => {
     return <ProductCard
@@ -29,26 +29,11 @@ function App(props) {
     title={product.title} 
     description={product.description} 
     key={product.id}
-    id={product.id}
-    addToWishlist={addToWishlist}
-    removeFromWishlist={removeFromWishlist}/>
+    id={product.id}/>
   })
 
-function addToWishlist(id){
-  products.map(item=>{
-    if (item.id === id){
-      setWishlist(prev=>[...prev, item])
-    }
-  })
-}
 
-function removeFromWishlist(id){
-  products.map(item=>{
-    if (item.id === id){
-      setWishlist(prev=> prev.filter(item=> item.id !== id))
-    }
-  })
-}
+
 
   
 
