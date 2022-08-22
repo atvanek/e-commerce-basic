@@ -3,13 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Cart from './modules/Cart'
+import Wishlist from './modules/Wishlist'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+    <Routes>
+        <Route path='/' element={<App />}></Route>
+        <Route path='/cart' element={<Cart />}></Route>
+        <Route path='/wishlist' element={<Wishlist />}></Route>
+      </Routes>
     </BrowserRouter>
   </React.StrictMode>
 );
