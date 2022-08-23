@@ -7,24 +7,16 @@ import {Context} from './Context'
 
 function App(props) {
 
-  const {wishlist, products, setProducts, remove} = React.useContext(Context)
+  const {wishlist, products} = React.useContext(Context)
 
   React.useEffect(()=>{
     localStorage.setItem('wishlist', JSON.stringify(wishlist))
   },[wishlist])
 
-
-  React.useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-            .then(res=>res.json())
-            .then(json=>setProducts(json))
-  }, [])
-
-
   
   const productCardElements = products.map(product => {
     return <ProductCard
-    products={products} 
+    product={product} 
     img={product.image} 
     title={product.title} 
     description={product.description} 
@@ -32,20 +24,13 @@ function App(props) {
     id={product.id}/>
   })
 
-
-
-
-  
-
   return (
     <>    <Nav />
     <Banner />
     <div className='product-card-container row'>
       {productCardElements}
     </div></>
-  
    
-    
   );
 }
 

@@ -1,28 +1,27 @@
 import React from 'react'
 import {Context} from '../Context'
+import {Link} from 'react-router-dom'
 
-export default function ProductCard ({img, title, description, id}) {
+export default function ProductCard ({img, title, description, id, product}) {
    
     const [details, setDetails] = React.useState(false);
     const [hovered, setHovered] = React.useState(false);
     const [favorite, setFavorite] = React.useState(false);
-    const {addToWishlist, removeFromWishlist} = React.useContext(Context)
+    const {products, setProducts, addToWishlist, removeFromWishlist} = React.useContext(Context)
 
     function addFavorite(id){
-        setFavorite(prev => !prev)
         addToWishlist(id)
         console.log('added to wishlist')
     }
 
     function removeFavorite(id){
-        setFavorite(prev => !prev);
         removeFromWishlist(id)
         console.log('removed from wishlist')
     }
 
 
     function heartIcon () {
-        if(favorite){
+        if(product.isFavorited){
             return <i className="fa-solid fa-heart filled" onClick={()=>removeFavorite(id)}></i>
         }
         else if (hovered){
@@ -48,7 +47,7 @@ export default function ProductCard ({img, title, description, id}) {
                         </p>
                 </div>
                 <button className="btn btn-primary" onClick={() => setDetails(prev => !prev)}>{details ? 'Hide Details' : 'View Details'}</button>
-                <button className="btn btn-secondary">Go to Product Page</button>
+                <Link to={`/${id}`}><button className="btn btn-secondary">Go to Product Page</button></Link>
             </div>
         </div>
     )
