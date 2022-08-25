@@ -61,3 +61,20 @@ code {
  .filled{
   color: red;
 }
+
+.wishlist-item-container{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  background-color:aliceblue;
+  margin: 15px;
+  padding: 15px;
+}
+.wishlist-thumbnail{
+  height: 100px;
+}
+
+.trash-icon:hover{
+  cursor: pointer;
+  color: grey;
+}

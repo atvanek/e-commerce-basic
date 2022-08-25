@@ -2,12 +2,12 @@ import React from 'react'
 import {Context} from '../Context'
 import {Link} from 'react-router-dom'
 
-export default function ProductCard ({img, title, description, id, product}) {
+export default function ProductCard ({img, title, description, id, product, count}) {
    
     const [details, setDetails] = React.useState(false);
     const [hovered, setHovered] = React.useState(false);
     const [favorite, setFavorite] = React.useState(false);
-    const {products, setProducts, addToWishlist, removeFromWishlist} = React.useContext(Context)
+    const {wishlist, addToWishlist, removeFromWishlist} = React.useContext(Context)
 
     function addFavorite(id){
         addToWishlist(id)
@@ -19,9 +19,12 @@ export default function ProductCard ({img, title, description, id, product}) {
         console.log('removed from wishlist')
     }
 
+    function isOnWishlist (id) {
+        return wishlist.some(item => item.id === id)
+    }
 
     function heartIcon () {
-        if(product.isFavorited){
+        if(isOnWishlist(id)){
             return <i className="fa-solid fa-heart filled" onClick={()=>removeFavorite(id)}></i>
         }
         else if (hovered){
@@ -42,6 +45,7 @@ export default function ProductCard ({img, title, description, id, product}) {
                         <i className="fa-solid fa-star star"></i>
                         <i className="fa-solid fa-star star"></i>
                         <i className="fa-solid fa-star-half-stroke star"></i>
+                        {count}
                         <br/>
                         {details && description}
                         </p>
