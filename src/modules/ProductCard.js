@@ -38,12 +38,6 @@ export default function ProductCard ({img, title, description, id, product, coun
     const full = <i className="fa-solid fa-star star"></i>
     const half = <i className="fa-solid fa-star-half-stroke star"></i>
     const empty = <i class="fa-regular fa-star"></i>
-    function ratingStars(arr){
-        arr.map(rating =>{
-            
-        })
-        if()
-    }
 
     return (
         <div className="card col-12 col-md-3 m-3 product-card" onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)}>
