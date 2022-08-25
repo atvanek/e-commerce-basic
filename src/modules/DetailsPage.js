@@ -13,11 +13,18 @@ export default function DetailsPage () {
     return (
         <> 
         <Nav />
-        <h1>{thisProduct.title}</h1>
-        <h2>{thisProduct.price}</h2>
-        <p>{thisProduct.description}</p>
-        <img src={thisProduct.image} />
+        <div className='row details-container'>
+            <div className='details-image-container col col-5'>
+                <img className='details-image'src={thisProduct.image} />
+            </div>
+            <div className='details-description-container col col-5'>
+                <h1>{thisProduct.title}</h1>
+                <h2>{thisProduct.price.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h2>
+                <p>{thisProduct.description}</p>
+            </div>
+            
+        </div>
+     
         </>
-    )
-       
+    )     
 }
