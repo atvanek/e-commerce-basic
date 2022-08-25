@@ -25,15 +25,28 @@ export default function ProductCard ({img, title, description, id, product, coun
 
     function heartIcon () {
         if(isOnWishlist(id)){
-            return <i className="fa-solid fa-heart filled" onClick={()=>removeFavorite(id)}></i>
+            return <i className="fa-solid fa-heart filled heart-icon" 
+            onClick={()=>removeFavorite(id)}></i>
         }
         else if (hovered){
-            return <i className="fa-regular fa-heart" onClick={()=>addFavorite(id)}></i>
+            return <i className="fa-regular fa-heart heart-icon" 
+            onClick={()=>addFavorite(id)}></i>
         }
     }
 
+    const charArr = Array.from(Array(11).keys(), x => x/2)
+    const full = <i className="fa-solid fa-star star"></i>
+    const half = <i className="fa-solid fa-star-half-stroke star"></i>
+    const empty = <i class="fa-regular fa-star"></i>
+    function ratingStars(arr){
+        arr.map(rating =>{
+            
+        })
+        if()
+    }
+
     return (
-        <div className="card col-12 col-md-3 m-3" onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)}>
+        <div className="card col-12 col-md-3 m-3 product-card" onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)}>
             <img className="card-img-top" src={img} alt="Card image cap" />
             {heartIcon()}
             <div className="card-body">
@@ -47,11 +60,15 @@ export default function ProductCard ({img, title, description, id, product, coun
                         <i className="fa-solid fa-star-half-stroke star"></i>
                         {count}
                         <br/>
-                        {details && description}
+                        {details && 
+                        <p className='product-description'>{description}</p>}
                         </p>
                 </div>
-                <button className="btn btn-primary" onClick={() => setDetails(prev => !prev)}>{details ? 'Hide Details' : 'View Details'}</button>
-                <Link to={`/${id}`}><button className="btn btn-secondary">Go to Product Page</button></Link>
+                <div className='product-buttons m-4'>
+                    <button className="btn btn-primary m-1" onClick={() => setDetails(prev => !prev)}>{details ? 'Hide Details' : 'View Details'}</button>
+                    <Link to={`/${id}`}><button className="btn btn-secondary m-1">Go to Product Page</button></Link>
+                </div>
+                
             </div>
         </div>
     )

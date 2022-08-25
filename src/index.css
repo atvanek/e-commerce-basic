@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: lightblue;
 }
 
 code {
@@ -30,8 +31,22 @@ code {
   margin: 20px;
   background-color: aliceblue;
   border-radius: 10px;
-
 }
+
+.product-card, .product-card-container, .wishlist-item-container, .details-container, nav{
+  box-shadow: 5px 5px 5px grey;
+}
+
+.heart-icon:hover{
+  cursor: pointer;
+}
+
+.product-buttons{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
 .row{
   justify-content: space-around;
 }
@@ -50,16 +65,26 @@ code {
   left: 15px;
 }
 
-.fa-heart:hover{
-  cursor: pointer;
-}
-
 .star {
   color: gold;
 }
 
  .filled{
   color: red;
+}
+
+@keyframes descriptionReveal{
+  0%{
+    height: 0%;
+  }
+
+100%{
+  height: 100%;
+}
+}
+
+.product-description{
+  padding: 10px;
 }
 
 .wishlist-item-container, .details-container{
