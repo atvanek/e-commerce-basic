@@ -13,7 +13,6 @@ function App(props) {
     localStorage.setItem('wishlist', JSON.stringify(wishlist))
   },[wishlist])
 
-  console.log(products)
   const productCardElements = products.map(product => {
     return <ProductCard
     product={product} 
