@@ -24,6 +24,8 @@ function App(props) {
     count={product.rating.count}/>
   })
 
+  console.log(products)
+
   return (
     <>    <Nav />
     <Banner />

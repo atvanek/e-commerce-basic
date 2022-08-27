@@ -6,14 +6,12 @@ import Nav from './Nav'
 export default function DetailsPage () {
 
     const {productId} = useParams()
-    const {products} = React.useContext(Context)
+    const {products, cart, setCart, quantityOptions} = React.useContext(Context)
     const [quantity, setQuantity] = React.useState(0)
-    const [cart, setCart] = React.useState([])
 
     const thisProduct = products.find(product => product.id.toString() === productId)
-    const numOfOptions = Array.from(Array(11).keys())
-    const quantityOptions = numOfOptions.map(num => <option key={num} value={num} className="dropdown-item">{num}</option>)
-
+    const isInCart = cart.some(item => item.product.id === thisProduct.id)
+    
     function addToCart() {
         setCart(prevCart=>{
             return [
@@ -35,7 +33,7 @@ export default function DetailsPage () {
             </div>
             <div className='details-description-container col col-5'>
                 <h1>{thisProduct.title}</h1>
-                <h2>{thisProduct.price.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h2>
+                <h2 className='price-text'>{thisProduct.price.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h2>
                 <p>{thisProduct.description}</p>
                 <select
                     value={quantity} 
@@ -48,7 +46,8 @@ export default function DetailsPage () {
                     {quantityOptions}
                 </select>
                 <button onClick={addToCart}className="btn btn-primary m-1">Add To Cart</button>
-    
+                {isInCart &&
+                <div className='added-tag'><i className="fa-solid fa-circle-check added-icon"></i><p>Added</p></div>}
             </div>
             
         </div>

@@ -107,3 +107,21 @@ code {
 .details-image{
   height: 300px;
 }
+
+.added-tag{
+  display: flex;
+  flex-flow: row nowrap;
+  color: rgb(46, 175, 46);
+}
+
+.added-tag p{
+  margin-bottom: 0;
+}
+
+.added-icon{
+  padding: 5px;
+}
+
+.price-text{
+  color: rgb(174, 21, 21);
+}

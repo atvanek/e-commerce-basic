@@ -13,6 +13,10 @@ function ContextProvider(props){
     const [products, setProducts] = React.useState([])
     const [wishlist, setWishlist] = React.useState(
         JSON.parse(localStorage.getItem('wishlist')) || [])
+    const [cart, setCart] = React.useState([])
+    const numOfOptions = Array.from(Array(11).keys())
+    const quantityOptions = numOfOptions.map(num => <option key={num} value={num} className="dropdown-item">{num}</option>)
+        
 
     function addToWishlist(id){
         products.map(item=>{
@@ -27,7 +31,7 @@ function ContextProvider(props){
           }})}
 
     return(
-        <Context.Provider value={{wishlist, setWishlist, addToWishlist, removeFromWishlist, products, setProducts}}>
+        <Context.Provider value={{wishlist, setWishlist, addToWishlist, removeFromWishlist, products, setProducts, cart, setCart, quantityOptions}}>
             {props.children}
         </Context.Provider>
     )

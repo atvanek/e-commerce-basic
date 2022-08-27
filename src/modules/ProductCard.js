@@ -7,7 +7,7 @@ export default function ProductCard ({img, title, description, id, product, coun
     const [details, setDetails] = React.useState(false);
     const [hovered, setHovered] = React.useState(false);
     const [favorite, setFavorite] = React.useState(false);
-    const {wishlist, addToWishlist, removeFromWishlist} = React.useContext(Context)
+    const {wishlist, addToWishlist, removeFromWishlist, cart} = React.useContext(Context)
 
     function addFavorite(id){
         addToWishlist(id)
@@ -38,6 +38,7 @@ export default function ProductCard ({img, title, description, id, product, coun
     const full = <i className="fa-solid fa-star star"></i>
     const half = <i className="fa-solid fa-star-half-stroke star"></i>
     const empty = <i class="fa-regular fa-star"></i>
+    const isInCart = cart.some(item => item.product.id === product.id)
 
     return (
         <div className="card col-12 col-md-3 m-3 product-card" onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)}>
@@ -59,8 +60,10 @@ export default function ProductCard ({img, title, description, id, product, coun
                         </p>
                 </div>
                 <div className='product-buttons m-4'>
-                    <button className="btn btn-primary m-1" onClick={() => setDetails(prev => !prev)}>{details ? 'Hide Details' : 'View Details'}</button>
+                    <button className="btn btn-primary m-1" onClick={() => setDetails(prev => !prev)}>{details ? 'Hide Details' : 'Show Details'}</button>
                     <Link to={`/${id}`}><button className="btn btn-secondary m-1">Go to Product Page</button></Link>
+                    {isInCart && 
+                    <div className='added-tag'><i className="fa-solid fa-circle-check added-icon"></i><p>Added</p></div>}
                 </div>
                 
             </div>
