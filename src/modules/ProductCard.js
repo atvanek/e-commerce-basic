@@ -60,8 +60,8 @@ export default function ProductCard ({img, title, description, id, product, coun
                         </p>
                 </div>
                 <div className='product-buttons m-4'>
-                    <button className="btn btn-primary m-1" onClick={() => setDetails(prev => !prev)}>{details ? 'Hide Details' : 'Show Details'}</button>
-                    <Link to={`/${id}`}><button className="btn btn-secondary m-1">Go to Product Page</button></Link>
+                    <button className="btn btn-secondary m-1" onClick={() => setDetails(prev => !prev)}>{details ? 'Hide Details' : 'Show Details'}</button>
+                    <Link to={`/${id}`}><button className="btn btn-primary m-1">Go to Product Page</button></Link>
                     {isInCart && 
                     <div className='added-tag'><i className="fa-solid fa-circle-check added-icon"></i><p>Added</p></div>}
                 </div>

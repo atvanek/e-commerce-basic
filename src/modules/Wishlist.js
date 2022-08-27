@@ -1,6 +1,7 @@
 import React from 'react'
 import Nav from './Nav'
 import {Context} from '../Context'
+import {Link} from 'react-router-dom'
 
 export default function Wishlist () {
 
@@ -10,8 +11,9 @@ const wishlistElements = wishlist.map(item => {
 return (
     <div className='wishlist-item-container'>
         <img className='wishlist-thumbnail'src={item.image} />
-        <p id={item.id}key={item.id}>{item.title}
-        <i onClick={()=>removeFromWishlist(item.id)} className="fa-solid fa-trash-can trash-icon"></i></p>
+        <h4 id={item.id}key={item.id}>{item.title}
+        <i onClick={()=>removeFromWishlist(item.id)} className="fa-solid fa-trash-can trash-icon"></i></h4>
+        <Link to={`/${item.id}`}><p>Product Page</p></Link>
     </div>)})
 
 
