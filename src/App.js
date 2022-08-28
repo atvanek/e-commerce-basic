@@ -7,11 +7,15 @@ import {Context} from './Context'
 
 function App(props) {
 
-  const {wishlist, products, productsData} = React.useContext(Context)
+  const {wishlist, products, cart} = React.useContext(Context)
 
   React.useEffect(()=>{
     localStorage.setItem('wishlist', JSON.stringify(wishlist))
   },[wishlist])
+
+  React.useEffect(()=>{
+    localStorage.setItem('cart', JSON.stringify(cart))
+  },[cart])
 
   const productCardElements = products.map(product => {
     return <ProductCard

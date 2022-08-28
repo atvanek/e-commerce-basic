@@ -33,7 +33,12 @@ code {
   border-radius: 10px;
 }
 
-.product-card, .product-card-container, .wishlist-item-container, .details-container, nav{
+.product-card, 
+.product-card-container, 
+.wishlist-item-container, 
+.details-container,
+.card, 
+nav{
   box-shadow: 5px 5px 5px grey;
 }
 
@@ -87,18 +92,6 @@ code {
   padding: 10px;
 }
 
-.wishlist-item-container, .details-container{
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  background-color:aliceblue;
-  margin: 15px;
-  padding: 15px;
-}
-.wishlist-thumbnail {
-  height: 100px;
-}
-
 .trash-icon:hover{
   cursor: pointer;
   color: grey;
@@ -124,4 +117,9 @@ code {
 
 .price-text{
   color: rgb(174, 21, 21);
+}
+
+.card-img{
+  max-height: 300px;
+  object-fit: contain;
 }

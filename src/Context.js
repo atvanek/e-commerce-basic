@@ -13,7 +13,9 @@ function ContextProvider(props){
     const [products, setProducts] = React.useState([])
     const [wishlist, setWishlist] = React.useState(
         JSON.parse(localStorage.getItem('wishlist')) || [])
-    const [cart, setCart] = React.useState([])
+    const [cart, setCart] = React.useState(
+      JSON.parse(localStorage.getItem('cart')) || []
+    )
     const numOfOptions = Array.from(Array(11).keys())
     const quantityOptions = numOfOptions.map(num => <option key={num} value={num} className="dropdown-item">{num}</option>)
         

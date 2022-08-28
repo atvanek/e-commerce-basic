@@ -12,8 +12,20 @@ export default function Cart () {
           }})}
 
     function updateCart (e) {
-        console.log(e.target.value)
-        }
+        const newCart = cart.map(item=>{
+            if(item.product.id.toString() === e.target.id){
+                return {
+                    product: item.product,
+                    quantity: e.target.value
+                }
+            }
+            else {
+                return item
+            }
+        })
+        setCart(newCart)
+        console.log(newCart)
+    }
 
     const priceArr = cart.map(item=>{
         return item.product.price * item.quantity
@@ -25,28 +37,38 @@ export default function Cart () {
     
     const cartElements = cart.map(item => {
         return (
-            <div className='wishlist-item-container'>
-                <img className='wishlist-thumbnail'src={item.product.image} />
-                <select
-                    value={item.quantity}
-                    onChange={(e)=>updateCart(e)} 
-                    name='quantity'
-                    className="btn btn-secondary" 
-                    type="button" id="dropdownMenuButton" 
-                    aria-haspopup="true" 
-                    aria-expanded="false">
-                    {quantityOptions}
-                </select>
-                <p id={item.product.id}key={item.product.id}>{item.product.title}
-                <i onClick={()=>removeFromCart(item.product.id)}className="fa-solid fa-trash-can trash-icon"></i></p>
-            </div>)})
+            <div key={item.product.id} className="card cart-card mb-3 m-5">
+                <div className="row no-gutters">
+                    <div className="col-md-4">
+                    <img src={item.product.image} className="card-img" />
+                    </div>
+                    <div className="col-md-8">
+                        <div className="card-body">
+                            <h5 className="card-title">{item.product.title}</h5>
+                            <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <select
+                                value={item.quantity}
+                                onChange={(e)=>updateCart(e)} 
+                                name='quantity'
+                                className="btn btn-secondary" 
+                                type="button" id={item.product.id} 
+                                aria-haspopup="true" 
+                                aria-expanded="false">
+                                {quantityOptions}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+)})
 
     return (
         <>
             <Nav />
             <h1>This is your cart</h1>
             {cartElements}
-            <h3>Subtotal: {subtotal}  </h3>
+            <h3 className='alert alert-dark'>Subtotal: {subtotal}  </h3>
+            <button className='btn btn-primary'>Proceed to Checkout</button>
             {}
         </>
         

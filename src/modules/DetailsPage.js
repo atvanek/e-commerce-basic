@@ -27,15 +27,18 @@ export default function DetailsPage () {
     return (
         <> 
         <Nav />
-        <div className='row details-container m-5'>
-            <div className='details-image-container col col-5'>
-                <img className='details-image'src={thisProduct.image} />
-            </div>
-            <div className='details-description-container col col-5'>
-                <h1>{thisProduct.title}</h1>
-                <h2 className='price-text'>{thisProduct.price.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h2>
-                <p>{thisProduct.description}</p>
-                <select
+
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                <img src={thisProduct.image} class="card-img" />
+                </div>
+                <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{thisProduct.title}</h5>
+                    <h4>{thisProduct.price.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h4>
+                    <p class="card-text">{thisProduct.description}</p>
+                    <select
                     value={quantity} 
                     onChange={(e)=>setQuantity(e.target.value)}
                     name='quantity'
@@ -48,8 +51,9 @@ export default function DetailsPage () {
                 <button onClick={addToCart}className="btn btn-primary m-1">Add To Cart</button>
                 {isInCart &&
                 <div className='added-tag'><i className="fa-solid fa-circle-check added-icon"></i><p>Added</p></div>}
+                </div>
+                </div>
             </div>
-            
         </div>
      
         </>
