@@ -52,7 +52,9 @@ export default function Cart () {
                             aria-expanded="false">
                             {quantityOptions}
                         </select>
-                        <button id={item.product.id}onClick={()=>console.log(cart)}>Delete</button>
+                        <button className='btn btn-secondary'
+                        id={item.product.id}
+                        onClick={(e)=>setCart(prevCart => prevCart.filter(item => item.product.id.toString() !== e.target.id))}>Remove from Cart</button>
                     </div>
                 </div>
             </div>

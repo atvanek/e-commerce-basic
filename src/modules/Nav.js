@@ -1,7 +1,15 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import {Context} from '../Context'
 
 export default function Nav () {
+
+  const {cart} = React.useContext(Context)
+  const totalCartItems = cart.map(item => item.quantity)
+
+  console.log(totalCartItems)
+  
+
     return(
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link to='/'>
@@ -24,7 +32,7 @@ export default function Nav () {
           <li className="nav-item active">
             <a className="nav-link" href="#">
               <i className="fa-solid fa-cart-shopping nav-icon"></i>
-              Cart 
+              Cart
               <span className="sr-only">(current)</span></a>
           </li>
           </Link>

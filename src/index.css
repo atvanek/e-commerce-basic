@@ -123,3 +123,8 @@ nav{
   max-height: 300px;
   object-fit: contain;
 }
+
+.product-card-img{
+  max-height: 50vh;
+  object-fit: contain;
+}

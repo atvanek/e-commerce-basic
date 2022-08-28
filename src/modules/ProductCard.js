@@ -42,7 +42,7 @@ export default function ProductCard ({img, title, description, id, product, coun
 
     return (
         <div className="card col-12 col-md-3 m-3 product-card" onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)}>
-            <img className="card-img-top" src={img} alt="Card image cap" />
+            <img className="card-img-top product-card-img" src={img} alt="Card image cap" />
             {heartIcon()}
             <div className="card-body">
                 <h5 className="card-title">{title}</h5>
