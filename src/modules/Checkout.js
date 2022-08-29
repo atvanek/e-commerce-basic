@@ -4,7 +4,23 @@ import { Context } from '../Context'
 
 export default function Checkout () {
 
-    const {cart, quantity, quantityOptions, setQuantity, updateCart, subtotal} = React.useContext(Context)
+    const {cart, setCart, quantityOptions, updateCart} = React.useContext(Context)
+
+    function handleShipping (e) {
+        const newCart = cart.map(item=>{
+            if(item.product.id == e.target.id){
+                    return {
+                        ...item,
+                        [`shipping-${item.product.id}`]: e.target.value
+                    }}
+            else {
+                return item
+            }
+        })
+        setCart(newCart)
+        console.log(newCart)
+    }
+
 
     const checkoutElements = cart.map(item =>{
         return (
@@ -35,14 +51,28 @@ export default function Checkout () {
 
                 <div class="card p-3">
                 <div class="form-check shipping-options">
-                    <input class="form-check-input" type="radio" name={`shipping-${item.product.id}`} id={`express-ship-${item.product.id}`} />
-                    <label class="form-check-label" for={`express-ship-${item.product.id}`}>
+                    <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    name={`shipping-${item.product.id}`} 
+                    id={item.product.id}
+                    value={9.99}
+                    onChange={(e)=>handleShipping(e)} />
+                    <label class="form-check-label" 
+                    for={`express-ship-${item.product.id}`}>
                         Express Shipping {9.99.toLocaleString("en-US", {style:"currency", currency:"USD"})}
                     </label>
                     </div>
                     <div class="form-check">
-                    <input class="form-check-input" type="radio" name={`shipping-${item.product.id}`} id={`standard-ship-${item.product.id}`} />
-                    <label class="form-check-label" for={`standard-ship-${item.product.id}`}>
+                    <input 
+                    class="form-check-input" 
+                    type="radio" 
+                    name={`shipping-${item.product.id}`} 
+                    id={item.product.id}
+                    value={0}
+                    onChange={(e)=>handleShipping(e)} />
+                    <label class="form-check-label" 
+                    for={`standard-ship-${item.product.id}`}>
                         Standard Shipping {0.0.toLocaleString("en-US", {style:"currency", currency:"USD"})}
                     </label>
                 </div> 
@@ -59,7 +89,7 @@ export default function Checkout () {
                 <div class="card-body">
                  {checkoutElements}
                     </div>
-                    <h3>Total: {subtotal}</h3>
+                <h5 className='card-header'>Payment Information</h5>
                 </div>
         </>
         
