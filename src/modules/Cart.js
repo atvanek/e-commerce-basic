@@ -4,29 +4,8 @@ import { Context } from '../Context'
 import { Link } from 'react-router-dom'
 
 export default function Cart () {
-    const {cart, setCart, quantityOptions} = React.useContext(Context)
-
-    function updateCart (e) {
-        const newCart = cart.map(item=>{
-            if(item.product.id == e.target.id){
-                    return {
-                        ...item,
-                        quantity: parseInt(e.target.value, 10)
-                    }}
-            else {
-                return item
-            }
-        })
-        setCart(newCart)
-        newCart.map(item=>{
-            if(item.quantity == 0){
-                setCart(prevCart => prevCart.filter(item => item.quantity !==0))
-            }
-        })
-        console.log(newCart)
-    }
-
-   const priceArr = cart.map(item=>{
+    const {cart, setCart, quantityOptions, updateCart} = React.useContext(Context)
+    const priceArr = cart.map(item=>{
         return item.product.price * item.quantity
     })
 

@@ -4,7 +4,7 @@ import { Context } from '../Context'
 
 export default function Checkout () {
 
-    const {cart, quantity, quantityOptions, setQuantity} = React.useContext(Context)
+    const {cart, quantity, quantityOptions, setQuantity, updateCart} = React.useContext(Context)
 
     const checkoutElements = cart.map(item =>{
         return (
@@ -18,14 +18,14 @@ export default function Checkout () {
                             <div class="card-body">
                                 <h5 class="card-title">{item.product.title}</h5>
                                 <select
-                                value={item.quantity} 
-                                onChange={(e)=>setQuantity(e.target.value)}
-                                name='quantity'
-                                className="btn btn-secondary" 
-                                type="button" id="dropdownMenuButton" 
-                                aria-haspopup="true" 
-                                aria-expanded="false">
-                                {quantityOptions}
+                                 value={item.quantity}
+                                 onChange={(e)=>updateCart(e)} 
+                                 name='quantity'
+                                 className="btn btn-secondary" 
+                                 type="button" id={item.product.id} 
+                                 aria-haspopup="true" 
+                                 aria-expanded="false">
+                                 {quantityOptions}
                             </select>
                                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                             </div>
@@ -34,7 +34,7 @@ export default function Checkout () {
                 </div> 
 
                 <div class="card col col-6">
-                <div class="form-check">
+                <div class="form-check shipping-options">
                     <input class="form-check-input" type="radio" name={`shipping-${item.product.id}`} id={`express-ship-${item.product.id}`} />
                     <label class="form-check-label" for={`express-ship-${item.product.id}`}>
                         Express Shipping

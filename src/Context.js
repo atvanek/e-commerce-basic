@@ -39,8 +39,28 @@ function ContextProvider(props){
             setWishlist(prev=> prev.filter(item=> item.id !== id))
           }})}
 
+    function updateCart (e) {
+            const newCart = cart.map(item=>{
+                if(item.product.id == e.target.id){
+                        return {
+                            ...item,
+                            quantity: parseInt(e.target.value, 10)
+                        }}
+                else {
+                    return item
+                }
+            })
+            setCart(newCart)
+            newCart.map(item=>{
+                if(item.quantity == 0){
+                    setCart(prevCart => prevCart.filter(item => item.quantity !==0))
+                }
+            })
+            console.log(newCart)
+        }
+
     return(
-        <Context.Provider value={{wishlist, setWishlist, addToWishlist, removeFromWishlist, products, setProducts, cart, setCart, quantityOptions}}>
+        <Context.Provider value={{wishlist, setWishlist, addToWishlist, removeFromWishlist, products, setProducts, cart, setCart, quantityOptions, updateCart}}>
             {props.children}
         </Context.Provider>
     )
