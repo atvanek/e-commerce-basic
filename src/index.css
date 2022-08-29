@@ -124,3 +124,7 @@ nav{
   max-height: 50vh;
   object-fit: contain;
 }
+
+.order-summary-image{
+  max-height: 100px;
+}

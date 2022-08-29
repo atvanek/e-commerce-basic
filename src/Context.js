@@ -63,7 +63,7 @@ function ContextProvider(props){
           return item.product.price * item.quantity
       })
   
-     const subtotal = priceArr.reduce((init, next) => init + next, 0).toLocaleString("en-US", {style:"currency", currency:"USD"});
+     const subtotal = priceArr.reduce((init, next) => init + next, 0);
 
     return(
         <Context.Provider 

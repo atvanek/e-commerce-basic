@@ -4,7 +4,7 @@ import { Context } from '../Context'
 
 export default function Checkout () {
 
-    const {cart, setCart, quantityOptions, updateCart} = React.useContext(Context)
+    const {cart, setCart, quantityOptions, updateCart, subtotal} = React.useContext(Context)
 
     function handleShipping (e) {
         const newCart = cart.map(item=>{
@@ -81,6 +81,30 @@ export default function Checkout () {
         )
     })
 
+    const orderSummaryElements = cart.map(item=>{
+        return(
+            <>
+            <div>
+                <div class="row order-summary-container">
+                    <div class="col-md-4">
+                        <img src={item.product.image} class="img-fluid rounded-start order-summary-image" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{item.product.title}</h5>
+                            <p class="card-text">{item.product.price.toLocaleString("en-US", {style:"currency", currency:"USD"})}</p>
+                            <p class="card-text"><small class="text-muted">Quantity: {item.quantity}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </>
+        )
+    })
+
+    const estimatedTax = (subtotal * .08)
+    const orderTotal = (subtotal + estimatedTax + 5)
+
     return(
         <>
             <Nav />
@@ -90,7 +114,42 @@ export default function Checkout () {
                  {checkoutElements}
                     </div>
                 <h5 className='card-header'>Payment Information</h5>
+                <div className='card m-5'>
+                    <h4 className='card-header'>Credit Card</h4>
+                    <form className= 'p-3'>
+                        <div class="form-group col">
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name on card" />
+                        </div>
+                        <div class="form-group col">
+                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Card" />
+                        </div>
+                        <div class="form-row col">
+                            <div class='form-group col-md-6'>
+                                <input type="number" min='01' max='12' class="form-control" id="exampleInputPassword1" placeholder="Exp. Month" />
+                            </div>
+                            <div class='form-group col-md-6'>
+                                <input type="number" min='2022' max='2023' class="form-control" id="exampleInputPassword1" placeholder="Exp. Year" />
+                            </div>
+                        </div>
+                        <div class='col-md-2'>
+                                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="CVV" />
+                            </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
+                <h5 className='card-header'>Order Summary</h5>
+                <div className='card m-5'>
+                    {orderSummaryElements}
+                </div>
+                <div className='card'>
+                <h3>Subtotal: {subtotal.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h3>
+                <h3>Shipping: $5.00</h3>
+                <h3>Estimated Tax: {estimatedTax.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h3>
+                <h3>Order Total: {orderTotal.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h3>
+
+                </div>
+                </div>
+                
         </>
         
     )

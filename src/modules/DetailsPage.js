@@ -28,7 +28,8 @@ export default function DetailsPage () {
         <> 
         <Nav />
 
-        <div class="card mb-3">
+        <div class="card mb-3 m-4">
+        <h5 className='card-header'>Product Details</h5>
             <div class="row no-gutters">
                 <div class="col-md-4">
                 <img src={thisProduct.image} class="card-img" />
