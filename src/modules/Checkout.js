@@ -35,14 +35,14 @@ export default function Checkout () {
 
                 <div class="card col col-6">
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id={"flexRadioDefault1"} />
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name={`shipping-${item.product.id}`} id={`express-ship-${item.product.id}`} />
+                    <label class="form-check-label" for={`express-ship-${item.product.id}`}>
                         Express Shipping
                     </label>
                     </div>
                     <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name={`shipping-${item.product.id}`} id={`standard-ship-${item.product.id}`} />
+                    <label class="form-check-label" for={`standard-ship-${item.product.id}`}>
                         Standard Shipping
                     </label>
                 </div> 
