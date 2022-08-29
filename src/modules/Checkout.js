@@ -4,24 +4,50 @@ import { Context } from '../Context'
 
 export default function Checkout () {
 
-    const {cart} = React.useContext(Context)
+    const {cart, quantity, quantityOptions, setQuantity} = React.useContext(Context)
 
     const checkoutElements = cart.map(item =>{
         return (
-            <div class="card mb-3 col col-6">
-            <div class="row g-0">
-                <div class="col-md-4">
-                <img src={item.product.image} class="img-fluid rounded-start" alt="..." />
+            <div key={item.product.id}className='card-group'>
+                <div class="card col col-6">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src={item.product.image} class="img-fluid rounded-start" alt="..." />
+                        </div>
+                            <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{item.product.title}</h5>
+                                <select
+                                value={item.quantity} 
+                                onChange={(e)=>setQuantity(e.target.value)}
+                                name='quantity'
+                                className="btn btn-secondary" 
+                                type="button" id="dropdownMenuButton" 
+                                aria-haspopup="true" 
+                                aria-expanded="false">
+                                {quantityOptions}
+                            </select>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+
+                <div class="card col col-6">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id={"flexRadioDefault1"} />
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Express Shipping
+                    </label>
+                    </div>
+                    <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Standard Shipping
+                    </label>
+                </div> 
                 </div>
-                <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">{item.product.title}</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-                </div>
-            </div>
-        </div> 
+        </div>
         )
     })
 

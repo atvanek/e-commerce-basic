@@ -70,8 +70,8 @@ export default function Cart () {
             {cartElements}
             <h3 className='alert alert-dark'>Subtotal: {subtotal}</h3>
             <Link to='/checkout'>
-                <button onClick={()=>setCart([])}className='btn btn-primary'>Proceed to Checkout</button>
-            {}</Link>
+                <button className='btn btn-primary'>Proceed to Checkout</button>
+                </Link>
         </>
         
     )
