@@ -22,7 +22,8 @@ function App(props) {
   console.log(products)
 
   return (
-    <>    <Nav />
+    <>    
+    <Nav />
     <Banner />
     <div className='product-card-container row'>
       {productCardElements}

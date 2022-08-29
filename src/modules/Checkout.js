@@ -86,7 +86,7 @@ export default function Checkout () {
             <>
             <div>
                 <div class="row order-summary-container">
-                    <div class="col-md-4">
+                    <div class="col-md-4 text-center">
                         <img src={item.product.image} class="img-fluid rounded-start order-summary-image" />
                     </div>
                     <div class="col-md-8">
@@ -141,12 +141,14 @@ export default function Checkout () {
                 <div className='card m-5'>
                     {orderSummaryElements}
                 </div>
-                <div className='card'>
-                <h3>Subtotal: {subtotal.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h3>
-                <h3>Shipping: $5.00</h3>
-                <h3>Estimated Tax: {estimatedTax.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h3>
-                <h3>Order Total: {orderTotal.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h3>
-
+                <div className='card m-5'>
+                    <div className='card-body'>
+                        <h4>Subtotal: {subtotal.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h4>
+                        <h4>Shipping: $5.00</h4>
+                        <h4>Estimated Tax: {estimatedTax.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h4>
+                        <hr />
+                        <h4>Order Total: {orderTotal.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h4>
+                        </div>
                 </div>
                 </div>
                 

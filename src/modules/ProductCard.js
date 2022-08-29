@@ -65,6 +65,9 @@ export default function ProductCard ({img, title, description, id, product, coun
                     {isInCart && 
                     <div className='added-tag'><i className="fa-solid fa-circle-check added-icon"></i><p>Added</p></div>}
                 </div>
+
+                
+                
                 
             </div>
         </div>
