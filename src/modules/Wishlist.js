@@ -10,7 +10,7 @@ const {wishlist, removeFromWishlist} = React.useContext(Context);
 const wishlistElements = wishlist.map(item => {
 return (
 
-    <div class="card mb-3">
+    <div class="card mb-3 m-5">
         <div class="row no-gutters">
             <div class="col-md-4">
             <img src={item.image} class="card-img" />
@@ -33,8 +33,12 @@ console.log(wishlist)
     return (
         <>
         <Nav />
-        <h1>This is your Wishlist</h1>
-        {wishlistElements}
+        <div className='card bg-light'>
+            <h1 className='card-header'>Wishlist</h1>
+            <div className='card-body'>
+                {wishlistElements.length ? wishlistElements : 'You have no items on your wishlist'}
+            </div>
+        </div>
         </>
     )
 }

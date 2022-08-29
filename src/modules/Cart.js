@@ -4,13 +4,7 @@ import { Context } from '../Context'
 import { Link } from 'react-router-dom'
 
 export default function Cart () {
-    const {cart, setCart, quantityOptions, updateCart} = React.useContext(Context)
-    const priceArr = cart.map(item=>{
-        return item.product.price * item.quantity
-    })
-
-   const subtotal = priceArr.reduce((init, next) => init + next, 0).toLocaleString("en-US", {style:"currency", currency:"USD"});
-    
+    const {cart, setCart, quantityOptions, updateCart, subtotal} = React.useContext(Context)
     const cartElements = cart.map(item => {
         return (
             <div key={item.product.id} className="card cart-card mb-3 m-5">
@@ -45,13 +39,16 @@ export default function Cart () {
     return (
         <>
             <Nav />
-            <h1>This is your cart</h1>
-            {cartElements}
-            <h3 className='alert alert-dark'>Subtotal: {subtotal}</h3>
-            <Link to='/checkout'>
-                <button className='btn btn-primary'>Proceed to Checkout</button>
-                </Link>
+            <div className='card bg-light'>
+                <h1 className='card-header'>Cart</h1>
+                <div className='card-body'>
+                {cartElements}
+                    <h3>Subtotal: {subtotal}</h3>
+                    <Link to='/checkout'>
+                        <button className='btn btn-primary'>Proceed to Checkout</button>
+                        </Link>
+                </div> 
+            </div>
         </>
-        
     )
 }

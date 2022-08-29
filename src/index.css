@@ -33,10 +33,6 @@ code {
   border-radius: 10px;
 }
 
-.product-card, 
-.product-card-container, 
-.wishlist-item-container, 
-.details-container,
 .card, 
 nav{
   box-shadow: 5px 5px 5px grey;

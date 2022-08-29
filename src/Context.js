@@ -59,8 +59,25 @@ function ContextProvider(props){
             console.log(newCart)
         }
 
+    const priceArr = cart.map(item=>{
+          return item.product.price * item.quantity
+      })
+  
+     const subtotal = priceArr.reduce((init, next) => init + next, 0).toLocaleString("en-US", {style:"currency", currency:"USD"});
+
     return(
-        <Context.Provider value={{wishlist, setWishlist, addToWishlist, removeFromWishlist, products, setProducts, cart, setCart, quantityOptions, updateCart}}>
+        <Context.Provider 
+        value={{wishlist, 
+        setWishlist, 
+        addToWishlist, 
+        removeFromWishlist, 
+        products, 
+        setProducts, 
+        cart, 
+        setCart, 
+        quantityOptions, 
+        updateCart, 
+        subtotal}}>
             {props.children}
         </Context.Provider>
     )
