@@ -1,6 +1,7 @@
 import React from 'react'
 import Nav from './Nav'
 import { Context } from '../Context'
+import { Link } from 'react-router-dom'
 
 export default function Cart () {
     const {cart, setCart, quantityOptions} = React.useContext(Context)
@@ -68,8 +69,9 @@ export default function Cart () {
             <h1>This is your cart</h1>
             {cartElements}
             <h3 className='alert alert-dark'>Subtotal: {subtotal}</h3>
-            <button onClick={()=>setCart([])}className='btn btn-primary'>Proceed to Checkout</button>
-            {}
+            <Link to='/checkout'>
+                <button onClick={()=>setCart([])}className='btn btn-primary'>Proceed to Checkout</button>
+            {}</Link>
         </>
         
     )

@@ -8,6 +8,7 @@ import Cart from './modules/Cart'
 import Wishlist from './modules/Wishlist'
 import {ContextProvider} from './Context'
 import DetailsPage from './modules/DetailsPage';
+import Checkout from './modules/Checkout';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,6 +20,7 @@ root.render(
         <Route path='/cart' element={<Cart />}></Route>
         <Route path='/wishlist' element={<Wishlist />}></Route>
         <Route path='/:productId' element={<DetailsPage />}></Route>
+        <Route path='/checkout' element={<Checkout />}></Route>
       </Routes>
     </BrowserRouter>
     </ContextProvider>

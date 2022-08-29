@@ -14,10 +14,17 @@ function ContextProvider(props){
     const [wishlist, setWishlist] = React.useState(
         JSON.parse(localStorage.getItem('wishlist')) || [])
     const [cart, setCart] = React.useState(
-      JSON.parse(localStorage.getItem('cart')) || []
-    )
+      JSON.parse(localStorage.getItem('cart')) || [])
     const numOfOptions = Array.from(Array(11).keys())
     const quantityOptions = numOfOptions.map(num => <option key={num} value={num} className="dropdown-item">{num}</option>)
+
+    React.useEffect(()=>{
+      localStorage.setItem('wishlist', JSON.stringify(wishlist))
+    },[wishlist])
+  
+    React.useEffect(()=>{
+      localStorage.setItem('cart', JSON.stringify(cart))
+    },[cart])
         
 
     function addToWishlist(id){

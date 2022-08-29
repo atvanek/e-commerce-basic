@@ -7,9 +7,6 @@ export default function Nav () {
   const {cart} = React.useContext(Context)
   const totalCartItems = cart.map(item => item.quantity)
 
-  console.log(totalCartItems)
-  
-
     return(
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link to='/'>
