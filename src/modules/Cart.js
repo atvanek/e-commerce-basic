@@ -43,7 +43,7 @@ export default function Cart () {
                 <h1 className='card-header'>Cart</h1>
                 <div className='card-body'>
                 {cartElements}
-                    <h3>Subtotal: {subtotal}</h3>
+                    <h3>Subtotal: {subtotal.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h3>
                     <Link to='/checkout'>
                         <button className='btn btn-primary'>Proceed to Checkout</button>
                         </Link>

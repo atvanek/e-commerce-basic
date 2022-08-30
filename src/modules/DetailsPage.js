@@ -51,7 +51,7 @@ export default function DetailsPage () {
                 </select>
                 <button onClick={addToCart}className="btn btn-primary m-1">Add To Cart</button>
                 {isInCart &&
-                <div className='added-tag'><i className="fa-solid fa-circle-check added-icon"></i><p>Added</p></div>}
+                <div className='added-tag m-3'><i className="fa-solid fa-circle-check added-icon"></i><p>Added</p></div>}
                 </div>
                 </div>
             </div>

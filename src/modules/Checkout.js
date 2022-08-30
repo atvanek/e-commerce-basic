@@ -117,21 +117,21 @@ export default function Checkout () {
                 <div className='card m-5'>
                     <h4 className='card-header'>Credit Card</h4>
                     <form className= 'p-3'>
-                        <div class="form-group col">
+                        <div class="form-group col p-3">
                             <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name on card" />
                         </div>
-                        <div class="form-group col">
+                        <div class="form-group col p-3">
                             <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Card" />
                         </div>
                         <div class="form-row col">
-                            <div class='form-group col-md-6'>
+                            <div class='form-group col-md-4 p-3'>
                                 <input type="number" min='01' max='12' class="form-control" id="exampleInputPassword1" placeholder="Exp. Month" />
                             </div>
-                            <div class='form-group col-md-6'>
+                            <div class='form-group col-md-4 p-3'>
                                 <input type="number" min='2022' max='2023' class="form-control" id="exampleInputPassword1" placeholder="Exp. Year" />
                             </div>
                         </div>
-                        <div class='col-md-2'>
+                        <div class='col-md-2 p-3'>
                                 <input type="text" class="form-control" id="exampleInputPassword1" placeholder="CVV" />
                             </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

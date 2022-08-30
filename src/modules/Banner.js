@@ -6,11 +6,11 @@ import banner3 from '../img/banner-3.jpg'
 export default function Banner () {
     return (
         <div id='banner-container'>
-            <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="false">
                 <ol className="carousel-indicators">
-                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active"></li>
-                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                    <button type='button' data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active"></button>
+                    <button type='button' data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
+                    <button type='button' data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
                 </ol>
                 <div className="carousel-inner">
                     <div className="carousel-item active">

@@ -55,20 +55,27 @@ export default function ProductCard ({img, title, description, id, product, coun
                         <i className="fa-solid fa-star-half-stroke star"></i>
                         {count}
                         <br/>
-                        {details && 
-                        <p className='product-description'>{description}</p>}
                         </p>
                 </div>
                 <div className='product-buttons m-4'>
-                    <button className="btn btn-secondary m-1" onClick={() => setDetails(prev => !prev)}>{details ? 'Hide Details' : 'Show Details'}</button>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                        <button class="bg-light accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${id}`} aria-expanded="true" aria-controls="collapseOne">
+                            Product Details
+                        </button>
+                        </h2>
+                        <div id={`collapse${id}`} class="accordion-collapse collapse" data-bs-toggle="collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <p>{description}</p>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                     <Link to={`/${id}`}><button className="btn btn-primary m-1">Go to Product Page</button></Link>
                     {isInCart && 
-                    <div className='added-tag'><i className="fa-solid fa-circle-check added-icon"></i><p>Added</p></div>}
+                    <div className='added-tag m-3'><i className="fa-solid fa-circle-check added-icon"></i><p>Added</p></div>}
                 </div>
-
-                
-                
-                
             </div>
         </div>
     )

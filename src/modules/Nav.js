@@ -10,7 +10,7 @@ export default function Nav () {
     return(
       <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
-      <Link to='/'><i class="fa-solid fa-barcode mx-3"></i>
+      <Link to='/'><i class="fa-solid fa-barcode mx-3 logo"></i>
         <a class="navbar-brand" href="#">My E-Shop</a></Link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
