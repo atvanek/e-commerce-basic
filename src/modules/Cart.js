@@ -42,11 +42,18 @@ export default function Cart () {
             <div className='card bg-light'>
                 <h1 className='card-header'>Cart</h1>
                 <div className='card-body'>
-                {cartElements}
+                {cart.length !==0 ?
+                <>
+                    {cartElements}
                     <h3>Subtotal: {subtotal.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h3>
                     <Link to='/checkout'>
-                        <button className='btn btn-primary'>Proceed to Checkout</button>
-                        </Link>
+                    <button className='btn btn-primary'>Proceed to Checkout</button>
+                    </Link>
+                </>
+                : 
+                <p>You have no items in your cart</p> }
+                
+                
                 </div> 
             </div>
         </>

@@ -5,6 +5,8 @@ import { Context } from '../Context'
 export default function Checkout () {
 
     const {cart, setCart, quantityOptions, updateCart, subtotal} = React.useContext(Context)
+    const [creditSubmitted, setCreditSubmitted] = React.useState(false)
+    const [orderSubmitted, setOrderSubmitted] = React.useState(false)
 
     function handleShipping (e) {
         const newCart = cart.map(item=>{
@@ -105,8 +107,17 @@ export default function Checkout () {
     const estimatedTax = (subtotal * .08)
     const orderTotal = (subtotal + estimatedTax + 5)
 
+    function handleCreditSubmit () {
+        setCreditSubmitted(true)
+    }
+
+    function handleOrderSubmit () {
+        setCart([])
+        setOrderSubmitted(true)
+    }
+ 
     return(
-        <>
+        <div>
             <Nav />
             <div class="card bg-light">
                 <h5 class="card-header">Shipping</h5>
@@ -134,25 +145,33 @@ export default function Checkout () {
                         <div class='col-md-2 p-3'>
                                 <input type="text" class="form-control" id="exampleInputPassword1" placeholder="CVV" />
                             </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button onClick={handleCreditSubmit} type="button" class="btn btn-primary">Submit</button>
+                        {creditSubmitted && <button onClick={()=>setCreditSubmitted(false)}type='button' className='btn btn-secondary'>Edit Card Info</button>}
+                        {creditSubmitted && <p>Payment information submitted successfully</p>}
                     </form>
                 </div>
                 <h5 className='card-header'>Order Summary</h5>
+                {!orderSubmitted &&
                 <div className='card m-5'>
                     {orderSummaryElements}
-                </div>
+                </div>}
                 <div className='card m-5'>
+                    {!orderSubmitted ? 
+                    (
                     <div className='card-body'>
-                        <h4>Subtotal: {subtotal.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h4>
-                        <h4>Shipping: $5.00</h4>
-                        <h4>Estimated Tax: {estimatedTax.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h4>
-                        <hr />
-                        <h4>Order Total: {orderTotal.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h4>
-                        </div>
-                </div>
-                </div>
-                
-        </>
+                    <h4>Subtotal: {subtotal.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h4>
+                    <h4>Shipping: $5.00</h4>
+                    <h4>Estimated Tax: {estimatedTax.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h4>
+                    <hr />
+                    <h4>Order Total: {orderTotal.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h4>
+                    <button onClick={handleOrderSubmit}type='button' className='btn btn-primary'>Place Order</button>
+                    </div>
+                    )
+                     : 
+                (<p>Order Submitted Successfully</p>) } 
+                </div>    
+        </div>
+    </div>
         
     )
 }
