@@ -22,7 +22,7 @@ a{
 }
 
 .logo{
-  color: whitesmoke;
+  color: white;
 }
 
 .product-card-container{
@@ -37,11 +37,15 @@ nav{
 }
 
 nav, .dropdown-menu{
-  background-color: #712cf9 ;
+  background-color: #712cf9;
 }
 
 .nav-text{
-  color: whitesmoke;
+  color: white;
+}
+
+.nav-text:hover{
+  color: rgb(211, 210, 210);
 }
 
 .heart-icon:hover{
@@ -61,6 +65,14 @@ nav, .dropdown-menu{
 .btn-primary{
   background-color: #712cf9;
   border: none;
+}
+
+.btn-primary:hover{
+  background-color: #5521bf;
+}
+
+.dropdown-item:hover{
+  background-color:#5521bf;
 }
 
 .card img{

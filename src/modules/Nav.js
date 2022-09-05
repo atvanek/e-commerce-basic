@@ -8,7 +8,7 @@ export default function Nav () {
   const totalCartItems = cart.map(item => item.quantity)
 
     return(
-      <nav class="navbar navbar-expand-lg">
+      <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
         <Link to='/'><i class="fa-solid fa-barcode mx-3 logo"></i>
           <a class="navbar-brand nav-text" href="#">My E-Shop</a></Link>

@@ -61,7 +61,7 @@ export default function ProductCard ({img, title, description, id, product, coun
                 <div class="accordion" id="accordionExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                        <button class="text-bg-light bg-light accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${id}`} aria-expanded="true" aria-controls="collapseOne">
+                        <button id='accordian' class="text-bg-light accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${id}`} aria-expanded="true" aria-controls="collapseOne">
                             Product Details
                         </button>
                         </h2>
