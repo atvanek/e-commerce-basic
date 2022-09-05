@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: lightblue;
+  background-color: whitesmoke;
 }
 
 code {
@@ -22,18 +22,26 @@ a{
 }
 
 .logo{
-  color: black;
+  color: whitesmoke;
 }
 
 .product-card-container{
   margin: 20px;
-  background-color: aliceblue;
+  background-color: rgb(207, 207, 207);
   border-radius: 10px;
 }
 
 .card, 
 nav{
   box-shadow: 5px 5px 5px grey;
+}
+
+nav, .dropdown-menu{
+  background-color: #712cf9 ;
+}
+
+.nav-text{
+  color: whitesmoke;
 }
 
 .heart-icon:hover{
@@ -48,6 +56,11 @@ nav{
 
 .row{
   justify-content: space-around;
+}
+
+.btn-primary{
+  background-color: #712cf9;
+  border: none;
 }
 
 .card img{
