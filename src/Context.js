@@ -17,6 +17,10 @@ function ContextProvider(props){
       JSON.parse(localStorage.getItem('cart')) || [])
     const numOfOptions = Array.from(Array(11).keys())
     const quantityOptions = numOfOptions.map(num => <option key={num} value={num} className="dropdown-item">{num}</option>)
+    const [loggedIn, setLoggedIn] = React.useState(
+        JSON.parse(localStorage.getItem('loggedIn')) || false)
+    const [user, setUser] = React.useState(
+        JSON.parse(localStorage.getItem('user')) || '')
 
     React.useEffect(()=>{
       localStorage.setItem('wishlist', JSON.stringify(wishlist))
@@ -25,6 +29,14 @@ function ContextProvider(props){
     React.useEffect(()=>{
       localStorage.setItem('cart', JSON.stringify(cart))
     },[cart])
+
+    React.useEffect(()=>{
+        localStorage.setItem('loggedIn', JSON.stringify(loggedIn))
+      },[loggedIn])
+    
+    React.useEffect(()=>{
+        localStorage.setItem('user', JSON.stringify(user))
+      },[user])
         
 
     function addToWishlist(id){
@@ -77,7 +89,11 @@ function ContextProvider(props){
         setCart, 
         quantityOptions, 
         updateCart, 
-        subtotal}}>
+        subtotal,
+        loggedIn,
+        setLoggedIn,
+        user,
+        setUser}}>
             {props.children}
         </Context.Provider>
     )

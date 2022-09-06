@@ -9,6 +9,7 @@ import Wishlist from './modules/Wishlist'
 import {ContextProvider} from './Context'
 import DetailsPage from './modules/DetailsPage';
 import Checkout from './modules/Checkout';
+import Login from './modules/Login'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
         <Route path='/wishlist' element={<Wishlist />}></Route>
         <Route path='/:productId' element={<DetailsPage />}></Route>
         <Route path='/checkout' element={<Checkout />}></Route>
+        <Route path='/login' element={<Login />}></Route>
       </Routes>
     </BrowserRouter>
     </ContextProvider>

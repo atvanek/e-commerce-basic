@@ -154,3 +154,7 @@ nav, .dropdown-menu{
 .order-summary-image{
   max-height: 100px;
 }
+
+#spinner{
+  color: #712cf9;
+}

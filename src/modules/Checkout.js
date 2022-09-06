@@ -168,7 +168,7 @@ export default function Checkout () {
                     </div>
                     )
                      : 
-                (<p>Order Submitted Successfully</p>) } 
+                (<p className='p-5'>Order Submitted Successfully</p>) } 
                 </div>    
         </div>
     </div>
