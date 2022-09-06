@@ -89,6 +89,9 @@ nav, .dropdown-menu{
   left: 15px;
 }
 
+.accordian{
+  --bs-accordion-btn-focus-border: none ;
+}
 .star {
   color: gold;
 }

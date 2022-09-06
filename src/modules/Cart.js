@@ -51,7 +51,7 @@ export default function Cart () {
                     </Link>
                 </>
                 : 
-                <p>You have no items in your cart</p> }
+                <p className='mb-0'>You have no items in your cart</p> }
                 
                 
                 </div> 
