@@ -17,12 +17,15 @@ export default function DetailsPage () {
             return [
             ...prevCart,
             {product: thisProduct,
-            quantity: quantity
+            quantity: quantity,
+            shipping: 0
             }
             ]
         })
         console.log(cart)
     }
+
+    
     
     return (
         <> 
@@ -41,7 +44,7 @@ export default function DetailsPage () {
                     <p class="card-text">{thisProduct.description}</p>
                     <select
                     value={quantity} 
-                    onChange={(e)=>setQuantity(e.target.value)}
+                    onChange={(e)=>setQuantity(parseInt(e.target.value, 10))}
                     name='quantity'
                     className="btn btn-secondary" 
                     type="button" id="dropdownMenuButton" 

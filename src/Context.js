@@ -56,7 +56,8 @@ function ContextProvider(props){
                 if(item.product.id == e.target.id){
                         return {
                             ...item,
-                            quantity: parseInt(e.target.value, 10)
+                            quantity: parseInt(e.target.value, 10),
+                            shipping: 0
                         }}
                 else {
                     return item

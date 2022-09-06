@@ -7,13 +7,14 @@ export default function Checkout () {
     const {cart, setCart, quantityOptions, updateCart, subtotal} = React.useContext(Context)
     const [creditSubmitted, setCreditSubmitted] = React.useState(false)
     const [orderSubmitted, setOrderSubmitted] = React.useState(false)
+    const [hideSpinner, setHideSpinner] = React.useState(true)
 
     function handleShipping (e) {
         const newCart = cart.map(item=>{
             if(item.product.id == e.target.id){
                     return {
                         ...item,
-                        [`shipping-${item.product.id}`]: e.target.value
+                        shipping: parseInt(e.target.value, 10)
                     }}
             else {
                 return item
@@ -103,17 +104,28 @@ export default function Checkout () {
             </>
         )
     })
+    
+    const shippingArr = cart.map(item=>{
+        return item.shipping
+    })
+    
+    const shippingTotal = shippingArr.reduce((prev, current) => prev + current, 0)
 
     const estimatedTax = (subtotal * .08)
-    const orderTotal = (subtotal + estimatedTax + 5)
+    const orderTotal = (subtotal + estimatedTax + shippingTotal)
+
 
     function handleCreditSubmit () {
         setCreditSubmitted(true)
     }
 
     function handleOrderSubmit () {
-        setCart([])
-        setOrderSubmitted(true)
+        setHideSpinner(false)
+        setTimeout(()=>{
+            setOrderSubmitted(true)
+            setHideSpinner(true)
+            setCart([])
+        }, 1000)
     }
  
     return(
@@ -160,11 +172,14 @@ export default function Checkout () {
                     (
                     <div className='card-body'>
                     <h4>Subtotal: {subtotal.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h4>
-                    <h4>Shipping: $5.00</h4>
+                    <h4>Shipping: {shippingTotal.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h4>
                     <h4>Estimated Tax: {estimatedTax.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h4>
                     <hr />
                     <h4>Order Total: {orderTotal.toLocaleString("en-US", {style:"currency", currency:"USD"})}</h4>
                     <button onClick={handleOrderSubmit}type='button' className='btn btn-primary'>Place Order</button>
+                    <div id='spinner' hidden={hideSpinner} class="spinner-border m-4" role="status">
+                        <span display='hidden' class="visually-hidden">Loading...</span>
+                    </div>
                     </div>
                     )
                      : 

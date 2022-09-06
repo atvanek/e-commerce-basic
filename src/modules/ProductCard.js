@@ -72,7 +72,7 @@ export default function ProductCard ({img, title, description, id, product, coun
                         </div>
                     </div>
                     </div>
-                    <Link to={`/${id}`}><button className="btn btn-primary m-1">Go to Product Page</button></Link>
+                    <Link to={`/${id}`}><button className="btn btn-primary m-1 p-3">Go to Product Page</button></Link>
                     {isInCart && 
                     <div className='added-tag m-3'><i className="fa-solid fa-circle-check added-icon"></i><p>Added</p></div>}
                 </div>

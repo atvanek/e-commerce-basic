@@ -9,7 +9,7 @@ export default function Login (){
     const [invalidPassword, setInvalidPassword] = React.useState(false)
     const [hideSpinner, setHideSpinner] = React.useState(true)
 
-    function handleSubmit (e) {
+    function login (e) {
         e.preventDefault()
         setHideSpinner(false)
         setInvalidPassword(false)
@@ -61,7 +61,7 @@ export default function Login (){
                 <span display='hidden' class="visually-hidden">Loading...</span>
             </div>
         </div>
-        <button onClick={handleSubmit} class="btn btn-primary mx-0 mt-4">Submit</button>
+        <button onClick={login} class="btn btn-primary mx-0 mt-4">Submit</button>
         </form>
         :
         <div className='card-body'>
